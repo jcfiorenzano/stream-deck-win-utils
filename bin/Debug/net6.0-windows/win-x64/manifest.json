@@ -1,0 +1,40 @@
+{
+  "Actions": [
+    {
+      "Icon": "images/actionIcon",
+      "Name": "WindowsResolutionChangerAction",
+      "States": [
+        {
+          "Image": "images/actionDefaultImage",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Changes the screen resolution of the Windows machine where the Stream Deck is connected to.",
+      "UUID": "WindowsResolutionChanger.jcfiorenzano.DefaultPluginAction"
+    }
+  ],
+	"Category": "Utilities",
+	"CategoryIcon": "images/category/categoryIcon",
+	"Disabled":  false,
+	"Author": "Juan Carlos Fiorenzano",
+	"CodePathWin": "WindowsResolutionChanger.exe",
+	"CodePathMac":  "WindowsResolutionChanger",
+  "PropertyInspectorPath": "property_inspector/property_inspector.html",
+  "Description": "Changes the screen resolution of the Windows machine where the Stream Deck is connected to.",
+  "Name": "WindowsResolutionChanger",
+  "Icon": "images/pluginIcon",
+  "URL": "https://www.elgato.com/gaming/stream-deck",
+  "Version": "1.0",
+	"SDKVersion": 2,
+	"Software": {
+		"MinimumVersion":  "4.1"
+	},
+	"OS": [
+    {
+        "Platform": "windows",
+        "MinimumVersion" : "10"
+    }
+  ]
+}

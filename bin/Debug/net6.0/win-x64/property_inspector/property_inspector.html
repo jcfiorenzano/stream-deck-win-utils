@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>WindowsResolutionChanger Property Inspector</title>
+	<link rel="stylesheet" href="css/sdpi.css">
+	<link rel="stylesheet" href="css/property-inspector.css">
+</head>
+<body>
+	<div class="sdpi-wrapper">
+		<!-- for more examples of the types of fields supported in property inspector visit:
+			Elgato Github PiSamples -> https://github.com/elgatosf/streamdeck-pisamples
+			and
+			Elgato SDK Documentation -> https://developer.elgato.com/documentation/stream-deck/sdk/property-inspector/
+	-->
+        <!--<div class="sdpi-item">
+            <div class="sdpi-item-label">Name</div>
+            <input class="sdpi-item-value" id="myname" value="" placeholder="Enter your name">
+        </div>
+        <div class="sdpi-item">
+            <div class="sdpi-item-label">Email</div>
+            <input class="sdpi-item-value" id="myemail" value="" placeholder="Enter your email-address">
+        </div>-->
+
+		<div class="sdpi-item" id="width">
+			<div class="sdpi-item-label">Width</div>
+			<input id="txtCounterValue" class="sdpi-item-value" type="number" inputmode="numeric" pattern="[0-9]*" placeholder="Enter width resolution ex: 3440" onchange="setSettings(event.target.value, 'Width')" />
+		</div>
+
+		<div class="sdpi-item" id="heigth">
+			<div class="sdpi-item-label">Heigth</div>
+			<input id="txtCounterValue" class="sdpi-item-value" type="number" inputmode="numeric" pattern="[0-9]*" placeholder="Enter height resolution ex: 144" onchange="setSettings(event.target.value, 'Height')" />
+		</div>
+
+	</div>
+	<script src="js/property-inspector.js"></script>
+</body>
+</html>
