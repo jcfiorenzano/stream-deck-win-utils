@@ -13,23 +13,15 @@
 			and
 			Elgato SDK Documentation -> https://developer.elgato.com/documentation/stream-deck/sdk/property-inspector/
 	-->
-        <!--<div class="sdpi-item">
-            <div class="sdpi-item-label">Name</div>
-            <input class="sdpi-item-value" id="myname" value="" placeholder="Enter your name">
-        </div>
-        <div class="sdpi-item">
-            <div class="sdpi-item-label">Email</div>
-            <input class="sdpi-item-value" id="myemail" value="" placeholder="Enter your email-address">
-        </div>-->
 
 		<div class="sdpi-item" id="width">
 			<div class="sdpi-item-label">Width</div>
-			<input id="txtCounterValue" class="sdpi-item-value" type="number" inputmode="numeric" pattern="[0-9]*" placeholder="Enter width resolution ex: 3440" onchange="setSettings(event.target.value, 'Width')" />
+			<input id="widthValue" class="sdpi-item-value" type="number" inputmode="numeric" pattern="[0-9]+" placeholder="Enter width resolution ex: 1920" onchange="setSettings(event.target.value, 'Width')" />
 		</div>
 
 		<div class="sdpi-item" id="heigth">
 			<div class="sdpi-item-label">Heigth</div>
-			<input id="txtCounterValue" class="sdpi-item-value" type="number" inputmode="numeric" pattern="[0-9]*" placeholder="Enter height resolution ex: 144" onchange="setSettings(event.target.value, 'Height')" />
+			<input id="heigthValue" class="sdpi-item-value" type="number" inputmode="numeric" pattern="[0-9]+" placeholder="Enter heigth resolution ex: 1080" onchange="setSettings(event.target.value, 'Heigth')" />
 		</div>
 
 	</div>

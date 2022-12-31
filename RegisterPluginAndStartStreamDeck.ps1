@@ -8,7 +8,6 @@ if ($PSSCriptRoot.Length -eq 0) {
   $basePath = $PWD.Path;
 }
 
-
 # Load and parse the plugin project file
 $pluginProjectFile = "$basePath\WindowsResolutionChanger.csproj"
 $projectContent = Get-Content $pluginProjectFile | Out-String;
@@ -43,7 +42,7 @@ $destDir = "$($env:APPDATA)\Elgato\StreamDeck\Plugins\$pluginID.sdPlugin"
 
 $pluginName = Split-Path $basePath -leaf
 
-Get-Process -Name ("StreamDeck", $pluginName) -ErrorAction SilentlyContinue | Stop-Process –force -ErrorAction SilentlyContinue
+Get-Process -Name "StreamDeck" -ErrorAction SilentlyContinue | Stop-Process –force -ErrorAction SilentlyContinue
 
 # Delete the target directory, make sure the deployment/copy is clean
 If (Test-Path $destDir) {
