@@ -1,2 +1,0 @@
-D:\dev\WindowsResolutionChanger\obj\Debug\netcoreapp3.1\win-x64\WindowsResolutionChanger.csproj.AssemblyReference.cache
-D:\dev\WindowsResolutionChanger\obj\Debug\netcoreapp3.1\win-x64\WindowsResolutionChanger.GeneratedMSBuildEditorConfig.editorconfig
