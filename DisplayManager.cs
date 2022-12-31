@@ -4,6 +4,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using WindowsResolutionChanger.Models;
 
 namespace WindowsResolutionChanger
 {
@@ -199,6 +200,50 @@ namespace WindowsResolutionChanger
             }
 
             throw new Exception("Unable to change the display resolution.");
+        }
+
+
+        public static ScreenResolutionModel GetCurrentResolution() 
+        {
+            const uint EDS_RAWMODE = 0x00000002;
+
+            DISPLAY_DEVICE display = new DISPLAY_DEVICE();
+
+            bool foundPrimary = false;
+            for(uint deviceIndex = 0; deviceIndex < 10; deviceIndex++)
+            {
+                DISPLAY_DEVICE testDisplayDevice = new DISPLAY_DEVICE();
+                testDisplayDevice.cb = Marshal.SizeOf(testDisplayDevice);
+
+                if (User_32.EnumDisplayDevices(null, deviceIndex, ref testDisplayDevice, 1))
+                {
+                    if ((testDisplayDevice.StateFlags & DisplayDeviceStateFlags.PrimaryDevice) == DisplayDeviceStateFlags.PrimaryDevice) 
+                    {
+                        foundPrimary = true;
+                        display = testDisplayDevice;
+                        break;
+                    }
+                }
+            }
+
+            if (!foundPrimary) 
+            {
+                throw new Exception("Unable to find the primary display device");
+            }
+
+            DEVMODE devMode = GetDevMode();
+
+            if (0 == User_32.EnumDisplaySettingsEx(display.DeviceName, User_32.ENUM_CURRENT_SETTINGS, ref devMode, EDS_RAWMODE))
+            {
+                throw new Exception($"Unable to get current settings for {display.DeviceName}");
+            }
+
+            return new ScreenResolutionModel
+            {
+
+                Width = devMode.dmPelsWidth,
+                Heigth = devMode.dmPelsHeight
+            };
         }
 
         private static DEVMODE GetDevMode()

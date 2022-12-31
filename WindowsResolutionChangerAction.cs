@@ -1,12 +1,32 @@
 ﻿using StreamDeckLib;
 using StreamDeckLib.Messages;
 using System.Threading.Tasks;
+using WindowsResolutionChanger.Models;
 
 namespace WindowsResolutionChanger
 {
     [ActionUuid(Uuid="WindowsResolutionChanger.jcfiorenzano.DefaultPluginAction")]
     public class WindowsResolutionChangerAction : BaseStreamDeckActionWithSettingsModel<Models.ScreenResolutionModel>
     {
+        class WindowsResolutionChangeActionState
+        {
+            public bool resolutionChanged { get; set; }
+        }
+
+        private ScreenResolutionModel baseResolution;
+        private WindowsResolutionChangeActionState state;
+
+        public WindowsResolutionChangerAction()
+            : base()
+        {
+            baseResolution = DisplayManager.GetCurrentResolution();
+
+            state = new WindowsResolutionChangeActionState
+            {
+                resolutionChanged = false
+            };
+        }
+
         public override async Task OnKeyUp(StreamDeckEventPayload args)
         {
 
@@ -16,7 +36,19 @@ namespace WindowsResolutionChanger
                 return;
             }
 
-            DisplayManager.ChangeResolution(SettingsModel.Width, SettingsModel.Heigth);
+            ScreenResolutionModel newResolution = SettingsModel;
+
+            if (state.resolutionChanged)
+            {
+                newResolution = baseResolution;
+                state.resolutionChanged = false;
+            }
+            else
+            {
+                state.resolutionChanged = true;
+            }
+
+            DisplayManager.ChangeResolution(newResolution.Width, newResolution.Heigth);
 
             await Manager.SetSettingsAsync(args.context, SettingsModel);
         }
